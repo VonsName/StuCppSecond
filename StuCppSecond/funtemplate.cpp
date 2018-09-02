@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <string.h>
 
 using namespace std;
 
@@ -50,7 +51,7 @@ void myprint(T *array, I size)
 /**
  * 函数模板,让类型参数化,泛型编程
  */
-int main01(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int mainf01()
 {
 
 	int a = 10, b = 20;
@@ -68,14 +69,28 @@ int main01(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** en
 
 
 /**
- * 函数模板当函数参数
+ * 1.函数模板当函数参数
+ * 2.调用模板函数,会严格的按照参数类型进行匹配,不会进行自动类型转换
+ * 3.普通函数的调用,可以进行隐式的类型转换
+ * 4.编译器从函数模板通过具体类型产生不同的函数,编译器会对函数模板进行两次编译,
+ *			在声明的地方对模板代码本身进行编译,在调用的地方对参数进行替换后的代码进行编译,
+ *			相同类型的多次调用只会编译一次
+ * 5.当模板函数和普通函数都符合调用时,优先选择普通函数
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int mainf02()
 {
 
 	int a[] = {33,12,8,1,0,55,88,31,8,6};
 	int size = sizeof(a) / sizeof(*a);
-	mySort(a, size);
-	myprint(a, size);
+	mySort<int,int>(a, size);
+	myprint<int,int>(a, size);
+
+
+	printf("\n");
+//	char *buf = "adaqejqpejqada";//error 字符串常量不可改变 交换顺序的时候改变了 程序段错误
+	char buf[] = "kdladapzopadaqejqpejqada";
+	int len = strlen(buf);
+	mySort<char,int>(buf, len);
+	myprint<char,int>(buf, len);
 	return 0;
 }

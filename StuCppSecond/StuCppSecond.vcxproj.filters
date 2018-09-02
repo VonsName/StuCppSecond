@@ -18,5 +18,31 @@
     <ClCompile Include="funtemplate.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="classtemplate.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="classtemplate01.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="classtemplate02.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ComplexTest.hpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mainarray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MyArrays.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ComplexTest.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyArrays.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -146,7 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="classtemplate.cpp" />
+    <ClCompile Include="classtemplate01.cpp" />
+    <ClCompile Include="classtemplate02.cpp" />
+    <ClCompile Include="ComplexTest.hpp" />
     <ClCompile Include="funtemplate.cpp" />
+    <ClCompile Include="mainarray.cpp" />
+    <ClCompile Include="MyArrays.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ComplexTest.h" />
+    <ClInclude Include="MyArrays.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
