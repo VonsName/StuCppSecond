@@ -110,7 +110,7 @@ int mainarr01(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char**
 /**
  * ÈİÆ÷ÄÚ´æ´¢Ö¸Õë
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int mainarr02(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	Teacher t1("lisi", 1);
 	Teacher t2("wangwu", 2);
@@ -132,4 +132,5 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 	{
 		printf("%s %d\n", arr1[i]->getName(), arr[i]->getNo());
 	}
+	return 0;
 }
