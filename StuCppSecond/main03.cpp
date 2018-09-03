@@ -74,7 +74,7 @@ void print_const_cart(const char *p)
  * 3.dynamic_cast:动态类型转换，如子类与父类之间的转换
  * 4.const_cast:去除变量的只读属性
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int mainmain001(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 
 	//static_cast 
@@ -123,7 +123,7 @@ private:
 };
 
 
-void testBad(int a)
+void testBad  (int a) 
 {
 	if (a==0)
 	{
@@ -139,6 +139,8 @@ void testBad(int a)
  * 1.如果抛出异常的类型是类类型，在使用try ..catch(..e)接受的时候
  *		catch(..e)C++会使用拷贝构造函数拷贝throw出的类对象到e变量
  * 2.异常的声明周期：从抛出的地方一直到catch(..e)所在的函数结束
+ * 3.异常被抛出后,从进入try块起,到异常被抛掷前,这期间在栈上构造的所有对象,都会被自动析构
+ *			,析构的顺序与构造的顺序相反,这一过程称为栈解旋
  */
 int mainmain02(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {

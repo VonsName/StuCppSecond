@@ -152,12 +152,18 @@
     <ClCompile Include="ComplexTest.hpp" />
     <ClCompile Include="funtemplate.cpp" />
     <ClCompile Include="main03.cpp" />
+    <ClCompile Include="main04.cpp" />
+    <ClCompile Include="main05.cpp" />
     <ClCompile Include="mainarray.cpp" />
     <ClCompile Include="MyArrays.cpp" />
+    <ClCompile Include="MyException.cpp" />
+    <ClCompile Include="SizeError.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComplexTest.h" />
     <ClInclude Include="MyArrays.h" />
+    <ClInclude Include="MyException.h" />
+    <ClInclude Include="SizeError.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -39,12 +39,30 @@
     <ClCompile Include="main03.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main04.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SizeError.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MyException.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main05.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ComplexTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MyArrays.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SizeError.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyException.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

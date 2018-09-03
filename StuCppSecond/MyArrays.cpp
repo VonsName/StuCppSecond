@@ -1,4 +1,6 @@
 #include "MyArrays.h"
+#include "SizeError.h"
+
  #pragma warning (disable:4390) 
 
 template <typename T, typename I>
@@ -55,6 +57,14 @@ MyArrays<T, I> & MyArrays<T, I>::operator=(const MyArrays<T,I> & arr)
 template <typename T, typename I>
 MyArrays<T, I>::MyArrays(I size)
 {
+	if (size <= 0)
+	{
+		throw tooSmallError("this index no prent -1");
+	}
+	if (size >= 1000)
+	{
+		throw tooSmallError::TooBig("this index is too big");
+	}
 	if (size == 0)
 	{
 		this->size = 5;
