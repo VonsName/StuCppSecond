@@ -3,6 +3,11 @@
 #include <vector>
 #include <algorithm>
 #include <string.h>
+#include <deque>
+#include <stack>
+#include <queue>
+#include <list>
+#include <functional>
 
 using namespace std;
 
@@ -58,7 +63,7 @@ public:
 	//重载()
 	Man& operator()(const Man &m)
 	{
-		if (this->name != NULL);
+		if (this->name != NULL)
 		{
 			delete[] this->name;
 			this->age = 0;
@@ -72,7 +77,7 @@ public:
 	//重载=
 	Man& operator=(const Man &m)
 	{
-		if (this->name != NULL);
+		if (this->name != NULL)
 		{
 			delete[] this->name;
 			this->age = 0;
@@ -184,8 +189,83 @@ void testvec04()
 	printf("\n");
 	cout << v5.size() << endl;//输出12
 }
+void testvec05()
+{
+	vector<int> v2(5);
+	for (unsigned int i = 0; i < v2.size(); i++)
+	{
+		v2[i] = i + 3;
+	}
+
+	//end();的位置是在容器最后一个元素的后面
+	//正向遍历
+	for (vector<int>::iterator it = v2.begin(); it != v2.end(); it++)
+	{
+		cout << *it << " ";
+	}
+
+	printf("\n");
+	//逆序遍历 rend()的位置是在容器第一个元素的前面
+	for (vector<int>::reverse_iterator it = v2.rbegin(); it != v2.rend(); it++)
+	{
+		cout << *it << " ";
+	}
+
+	//只读迭代器
+	printf("\n");
+	for (vector<int>::const_iterator it = v2.cbegin(); it != v2.cend(); it++)
+	{
+		cout << *it << " ";
+	}
+	//只读迭代器
+	printf("\n");
+	for (vector<int>::const_reverse_iterator it = v2.crbegin(); it != v2.crend(); it++)
+	{
+		cout << *it << " ";
+	}
+}
+
+
+void testvec06()
+{
+	vector<int> v2(5);
+	for (unsigned int i = 0; i < v2.size(); i++)
+	{
+		v2[i] = i + 3;
+	}
+
+	//区间删除
+	v2.erase(v2.begin(), v2.begin()+3); //0 -3 全部删除
+	for (vector<int>::iterator it = v2.begin(); it != v2.end(); it++)
+	{
+		cout << *it << " ";
+	}
+
+
+	//指定位置删除 
+	vector<int>::iterator it=v2.erase(v2.end()-1); 
+	//erase()会自动让迭代器后移,删除一个元素并返回下一个迭代器的位置
+	printf("\n");
+	for (vector<int>::reverse_iterator it = v2.rbegin(); it != v2.rend(); it++)
+	{
+		cout << *it << " ";
+	}
+
+	//插入
+	printf("\n");
+	v2.insert(v2.begin(), 3);
+	v2.insert(v2.end(), 3, 5);
+	for (vector<int>::reverse_iterator it = v2.rbegin(); it != v2.rend(); it++)
+	{
+		cout << *it << " ";
+	}
+}
 
 /**
+ *		//	vector<int>::const_pointer;
+ *		//vector<int>::pointer
+ *		//	vector<int>::const_reverse_iterator
+ *		//	vector<int>::const_iterator
  * stl
  * 1.vector :内部是以数组的方式存储的,存储空间是连续的
  *			:可以随机存取元素，也可以通过索引,获取元素的速度快
@@ -195,11 +275,186 @@ void testvec04()
  *			:pop_back() 删除尾部元素
  *			:front():返回头部元素，返回一个引用
  */
+int main06001(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+{
+//	test01vec();
+//	test02vec();
+//	test03vec();
+//	testvec04();
+//	testvec05();
+	testvec06();
+	return 0;
+}
+
+
+void testdeque01()
+{
+	deque<int> d1;
+	d1.push_back(1);
+	d1.push_back(3);
+	d1.push_back(5);
+	d1.push_front(7);
+	d1.push_front(9);
+	d1.push_front(11);
+	for (deque<int>::const_iterator it = d1.begin(); it != d1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+
+	d1.pop_back();//弹出尾部元素
+	d1.pop_front();//弹出头部元素
+
+	printf("\n");
+	for (deque<int>::const_iterator it = d1.begin(); it != d1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+
+	//根据迭代器查找数组下标
+	deque<int>::iterator it=find(d1.begin(), d1.end(), 3);
+	if (it != d1.end())
+	{
+		cout << "数组下标为: " << distance(d1.begin(), it) <<endl;
+	}
+	else
+	{
+		cout << "没有找到 " << endl;
+	}
+}
+
+
+void teststack001()
+{
+	stack<int> s1;
+	s1.push(1);
+	s1.push(3);
+	s1.push(5);
+
+	while (!s1.empty())
+	{
+		cout << s1.top() << " ";//获取栈顶元素
+		s1.pop();//弹出栈顶元素
+	}
+}
+
+void testqueue001()
+{
+	queue<int> q1;
+	q1.push(3);//队尾进,队头出,先进先出
+	q1.push(5);
+	q1.push(7);
+	while (!q1.empty())
+	{
+		cout << q1.front() << " ";
+		q1.pop();
+	}
+}
+
+
+/**
+ * list不能随机访问 
+ */
+void	testlist001()
+{
+	list<int> l1;
+	l1.push_back(1);//尾插法
+	l1.push_back(3);
+	l1.push_back(5);
+	l1.push_front(7);
+	l1.push_front(9);
+	l1.push_front(11);//头插法
+	for (list<int>::const_iterator it = l1.begin(); it != l1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+
+	l1.insert(l1.begin(), 77);//在开始位置前插入
+	for (list<int>::const_iterator it = l1.begin(); it != l1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+
+	l1.erase(l1.begin(), --l1.end());//区间删除,左闭右开
+	for (list<int>::const_iterator it = l1.begin(); it != l1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+
+	l1.push_back(1);//尾插法
+	l1.push_back(3);
+	l1.push_back(5);
+	l1.push_front(7);
+	l1.push_front(9);
+	l1.push_front(11);//头插法
+
+	l1.remove(5);//删除所有元素5
+	for (list<int>::const_iterator it = l1.begin(); it != l1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+	//erase(l1.begin()); 删除指定位置的元素,返回下一个元素的迭代器位置
+	list<int>::iterator it=l1.erase(l1.begin());
+	cout << *it << endl;//9
+	for (list<int>::const_iterator it = l1.begin(); it != l1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+
+}
+
+/**
+ * 优先级队列 priority_queue:默认为最大值优先级队列
+ */
+void testpriority_queue()
+{
+
+
+	//priority_queue:默认为最大值优先级队列
+	//priority_queue<int,vector<int>,less<int>>
+	priority_queue<int> pq1;
+	pq1.push(1);
+	pq1.push(3);
+	pq1.push(5);
+	
+	while (!pq1.empty())
+	{
+		cout << pq1.top() <<" ";
+		pq1.pop();
+	}
+
+	printf("\n");
+	//最小值优先级队列
+	priority_queue<int,vector<int>,greater<int>> pq2; //greater 要包含头文件->functional
+	pq2.push(1);
+	pq2.push(3);
+	pq2.push(5);
+
+	while (!pq2.empty())
+	{
+		cout << pq2.top() << " ";
+		pq2.pop();
+	}
+}
+
+/**
+ * stl
+ * 1.deque双端数组,头部和尾部都可以插入
+ * 2.stack 先进后出
+ * 3.queue:队列 队尾进,队头出,先进先出
+ * 4.list :双向链表,不可以随机的存取元素,不支持at() [] 取元素
+ */
 int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
-	//test01vec();
-//	test02vec();
-	//test03vec();
-	testvec04();
+//	testdeque01();
+//	teststack001();
+//	testqueue001();
+//	testlist001();
+//	testvec06();
+	testpriority_queue();
 	return 0;
 }
