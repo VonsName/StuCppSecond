@@ -4,7 +4,10 @@
 #include <fstream>
 #include <istream>
 #include <string>
-#include <cstring>
+#include <string.h>
+#include <cstring>//memset
+//#include <cstdlib>
+//#include <cstdio>
 
 using namespace std;
 
@@ -148,6 +151,9 @@ int main05008(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char**
 			cout << buf;
 	}*/
 
+
+	in >> noskipws;//表示包含空格回车一起读取
+	//一个字符一个字符的读取
 	/*char ch;
 	while (in.get(ch))
 	{
@@ -163,9 +169,8 @@ int main05008(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char**
 	{
 		cout << buf;
 	}
-
 	//string s;
-	//in >> noskipws;//表示包含空格回车一起读取
+	
 	//while (getline(in,s))
 	//{
 	//	cout << s;
@@ -241,7 +246,7 @@ private:
 /**
  * 二进制读写对象(序列化对象)
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main05110(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	char *p = "C:\\Users\\vons0\\Desktop\\3.txt";
 	ofstream outfile;
@@ -264,7 +269,7 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 	printf("strlen(mybuf)=%d\n", sizeof(mybuf)/sizeof(char));
 
 	char *pname = "adadasda";
-	printf("strlen(mybuf)=%d\n", strlen(pname));//8 ->不算空格
+	printf("strlen(mybuf)=%d\n", strlen(pname));//8 ->不算结尾符
 	printf("strlen(mybuf)=%d\n", sizeof(pname));//4 指针大小
 	//memset(mybuf, 0, );
 	ifstream in;
