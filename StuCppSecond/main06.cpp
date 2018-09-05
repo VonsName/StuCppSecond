@@ -737,8 +737,75 @@ void testmap()
 }
 
 
+
+class Person
+{
+public:
+	Person(string name, int age,double salary)
+	{
+		this->name = name;
+		this->age = age;
+		this->salary = salary;
+	}
+	Person(const Person &p)
+	{
+		this->name = p.name;
+		this->age = p.age;
+		this->salary = p.salary;
+	}
+public:
+	string name;
+	int age;
+	double salary;
+protected:
+private:
+};
+//
 void testmultimap()
 {
+	Person p1("lisi", 23, 999.99);
+	Person p2("wangwu", 25, 9999.99);
+	Person p3("zhangsan", 18, 1999.99);
+	Person p4("wangermazi", 22, 2999.99);
+	Person p5("zhaoyun", 22, 2999.99);
+	multimap<string, Person> mp;
+	multimap<string, Person> mp2;
+	mp2.insert(pair<string, Person>("sale", p1));
+	mp2.insert(pair<string, Person>("renshi", p3));
+
+	mp.insert(pair<string,Person>("sale", p1));
+	mp.insert(pair<string,Person>("renshi", p3));
+	mp.insert(make_pair("renshi", p4));
+	mp.insert(make_pair("sale", p2));
+	mp.insert(make_pair("develpoment", p5));
+
+	/*for (multimap<string, Person>::const_iterator it = mp.begin(); it != mp.end(); it++)
+	{
+		cout << it->first << "\t" << it->second.name << "\t" << it->second.salary << endl;
+	}*/
+	int num=mp.count("develpoment");
+	printf("develpoment部门人数=: %d\n", num);
+
+	multimap<string, Person>::iterator it=mp.find("develpoment");
+	while (it != mp.end())
+	{
+		if (strcmp(it->first.data(),"develpoment")==0)
+		{
+			cout << it->first << "\t" << it->second.name << "\t" << it->second.salary << endl;
+		}
+		if (it->second.age == 23)
+		{
+			it->second.name = "name23";
+		}
+		it++;
+	}
+
+
+	printf("\n");
+	for (multimap<string, Person>::const_iterator it = mp.begin(); it != mp.end(); it++)
+	{
+		cout << it->first << "\t" << it->second.name << "\t" << it->second.salary << endl;
+	}
 
 }
 
@@ -746,7 +813,7 @@ void testmultimap()
  * map/multimap
  * map :键是唯一的
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main06003(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 //	testmap();
 	testmultimap();
