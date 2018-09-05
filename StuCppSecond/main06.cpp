@@ -8,6 +8,9 @@
 #include <queue>
 #include <list>
 #include <functional>
+#include <set>
+#include <string>
+#include <map>
 
 using namespace std;
 
@@ -442,19 +445,310 @@ void testpriority_queue()
 }
 
 /**
+ * 元素不能重复，自动排序,默认升序
+ */
+void testset()
+{
+//	set < int, less<int>> s;//默认
+	set<int> s1;
+	for (int i = 0; i < 5; i++)
+	{
+		s1.insert(rand());
+	}
+	s1.insert(99);
+	s1.insert(99);
+	s1.insert(99);
+	/*for each (auto it in s1)
+	{
+		cout << it << " ";
+	}*/
+	for (set<int>::const_iterator it = s1.begin(); it != s1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+	s1.erase(s1.begin());
+	for (set<int>::const_iterator it = s1.begin(); it != s1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+
+	//降序
+	set<int, greater<int>> s2;
+	for (int i = 0; i < 5; i++)
+	{
+		s2.insert(rand());
+	}
+	for (set<int,greater<int>>::const_iterator it = s2.begin(); it != s2.end(); it++)
+	{
+		cout << *it << " ";
+	}
+}
+
+
+class Apple
+{
+public:
+	Apple(int height)
+	{
+		this->height = height;
+	}
+public:
+	int height;
+protected:
+private:
+};
+
+//仿函数,
+struct FuncApp 
+{
+	//重载了函数调用符()
+	bool operator()(const Apple &left, const Apple &right)
+	{
+		return left.height > right.height;
+	}
+};
+
+/**
+ * set自定义数据类型排序
+ */
+void testset01()
+{
+	Apple a1(23);
+	Apple a2(33);
+	Apple a3(3);
+	Apple a4(8);
+	Apple a5(19);
+	Apple a6(33);
+	set<Apple, FuncApp> s1;
+	s1.insert(a1);
+	//insert()会返回插入的结果
+	pair<set<Apple,FuncApp>::iterator,bool> it2= s1.insert(a2);
+	if (it2.second)
+	{
+		cout << "插入a2成功" << endl;
+	}
+	else
+	{
+		cout << "插入a2失败" << endl;
+	}
+	s1.insert(a3);
+	s1.insert(a4);
+	s1.insert(a5);
+
+	//自定义放函数按照年龄排序时，如果插入重复的年龄，则第二个会插入失败
+	pair<set<Apple, FuncApp>::iterator, bool> it6 = s1.insert(a6);
+	if (it6.second)
+	{
+		cout << "插入a6成功" << endl;
+	}
+	else
+	{
+		cout << "插入a6失败" << endl;
+	}
+
+	for (set<Apple, FuncApp>::const_iterator it = s1.begin(); it != s1.end(); it++)
+	{
+		cout << it->height << endl;
+	}
+
+}
+
+/**
+ *
+ *	//s1.lower_bound()//返回第一个大于等于元素的迭代器
+ *	//s1.upper_bound() //返回第一个大于元素的迭代器
+ */
+void testset02()
+{
+	set<int> s1;
+	for (int i = 0; i < 5; i++)
+	{
+		s1.insert(i+1);
+	}
+	for (set<int>::const_iterator it = s1.begin(); it != s1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+	//find()返回迭代器位置
+	set<int>::iterator it = s1.find(3);
+	cout << *it << endl;
+
+	cout << endl;
+	int cnum = s1.count(3);
+	cout << cnum << endl;
+	printf("\n");
+
+	//lower_bound(3) 返回大于等于3的第一个迭代器的位置
+	set<int>::iterator lit=s1.lower_bound(3);
+	cout << *lit << endl;//3
+
+	//upper_bound(3) 返回第一个大于3的元素的迭代器的位置
+	//要注意，如果元素是位于set最后一个位置，程序会段错误，返回的是空迭代器
+	set<int>::const_iterator lit2=s1.upper_bound(3);
+	if (lit2 != s1.end())
+	{
+		cout << "*lit2: " << *lit2 << endl;//4
+	}
+
+//	s1.erase(3);
+	//equal_range(3) 返回两个迭代器，一个大于等于3的第一个，第二个大于3的第一个
+	pair<set<int>::const_iterator, set<int>::const_iterator> pit = s1.equal_range(3);
+	cout << *(pit.first) << endl;//3
+	cout << *(pit.second) << endl;//4
+}
+
+
+/**
+ * 可以重复元素
+ */ 
+void testmultiset()
+{
+	multiset<int> ms1;
+	ms1.insert(1);
+	ms1.insert(3);
+	ms1.insert(5);
+	ms1.insert(3);
+	ms1.insert(1);
+	for (multiset<int>::iterator it = ms1.begin(); it != ms1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+
+
+	ms1.erase(3);
+	for (multiset<int>::iterator it = ms1.begin(); it != ms1.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	printf("\n");
+}
+
+/**
  * stl
  * 1.deque双端数组,头部和尾部都可以插入
  * 2.stack 先进后出
  * 3.queue:队列 队尾进,队头出,先进先出
- * 4.list :双向链表,不可以随机的存取元素,不支持at() [] 取元素
+ * 4.priority_queue:优先队列，默认最大值优先
+ * 5.list :双向链表,不可以随机的存取元素,不支持at() [] 取元素
+ * 6.set:包含的元素是唯一的，集合中的元素按一定的顺序排列，
+ *		元素插入过程是按排序规则插入，所以不能指定插入位置，不能直接存取元素，
+ *		不支持at() []，set支持唯一键值，元素不能重复；multiset元素可以重复，
+ *		不能直接修改set或者multiset中的值，只能先删除，再插入新的值
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main06002(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 //	testdeque01();
 //	teststack001();
 //	testqueue001();
 //	testlist001();
 //	testvec06();
-	testpriority_queue();
+//	testpriority_queue();
+//	testset();
+//	testset01();
+//	testset02();
+	testmultiset();
+	return 0;
+}
+
+
+
+void testmap()
+{
+	map<int, string> m1;
+
+	pair<map<int,string>::iterator,bool> pa=m1.insert(pair<int,string>(1, "zhangsan"));
+	if (pa.second)
+	{
+		printf("插入成功\n");
+	}
+	else
+	{
+		printf("插入失败\n");
+	}
+
+	pa = m1.insert(make_pair(2, "lisi"));
+	if (pa.second)
+	{
+		printf("插入成功\n");
+	}
+	else
+	{
+		printf("插入失败\n");
+	}
+
+	pa = m1.insert(map<int, string>::value_type(3, "wangwu"));
+	if (pa.second)
+	{
+		printf("插入成功\n");
+	}
+	else
+	{
+		printf("插入失败\n");
+	}
+	m1[4] = "zhaoliu";
+	m1[4] = "wangermazi";//相同键则覆盖掉前面的，insert()相同的则报错
+
+	for (map<int, string>::const_iterator it = m1.begin(); it != m1.end(); it++)
+	{
+		cout << it->first << "==>" << it->second << endl;
+	}
+
+
+	map<int,string>::iterator mit= m1.find(3);
+	if (mit != m1.end())
+	{
+		cout << "查找=3->" << mit->first << "\t" << mit->second << endl;
+	}
+	else
+	{
+		cout << "没有找到" << endl;
+	}
+
+	pair<map<int,string>::iterator, map<int, string>::iterator>mypair=m1.equal_range(3);
+
+	if (mypair.first != m1.end())
+	{
+		cout << "查找大于等于3->" << mypair.first->first << "\t" << mypair.first->second << endl;
+	}
+	else 
+	{
+		cout << "没有找到大于等于" << endl;
+	}
+	if (mypair.second != m1.end())
+	{
+		cout << "查找大于3->" << mypair.second->first << "\t" << mypair.second->second << endl;
+	}
+	else
+	{
+		cout << "没有找到大于的" << endl;
+	}
+
+	printf("over\n");
+	while (!m1.empty())
+	{
+		map<int, string>::iterator it = m1.begin();
+		cout << (*it).first << "\t" << (*it).second << endl;
+		m1.erase(it);
+	}
+}
+
+
+void testmultimap()
+{
+
+}
+
+/**
+ * map/multimap
+ * map :键是唯一的
+ */
+int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+{
+//	testmap();
+	testmultimap();
 	return 0;
 }
