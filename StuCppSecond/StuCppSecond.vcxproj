@@ -157,6 +157,7 @@
     <ClCompile Include="main06.cpp" />
     <ClCompile Include="main07.cpp" />
     <ClCompile Include="main08.cpp" />
+    <ClCompile Include="main09.cpp" />
     <ClCompile Include="mainarray.cpp" />
     <ClCompile Include="MyArrays.cpp" />
     <ClCompile Include="MyException.cpp" />
