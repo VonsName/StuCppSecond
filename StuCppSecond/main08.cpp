@@ -189,7 +189,7 @@ void testfunobj03()
 }
 
 /**
- * 仿函数 二元谓词
+ * 仿函数 二元谓词 和set结合使用
  */
 struct MyCompartByNoCase 
 {
