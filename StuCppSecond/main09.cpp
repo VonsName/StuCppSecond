@@ -310,7 +310,7 @@ void main_copy()
 /**
  * ≈≈–Úœ‡πÿÀ„∑®
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main0903(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 //	main_merge();
 //	main_set_intersection();

@@ -151,6 +151,7 @@
     <ClCompile Include="classtemplate02.cpp" />
     <ClCompile Include="ComplexTest.hpp" />
     <ClCompile Include="funtemplate.cpp" />
+    <ClCompile Include="main010.cpp" />
     <ClCompile Include="main03.cpp" />
     <ClCompile Include="main04.cpp" />
     <ClCompile Include="main05.cpp" />
