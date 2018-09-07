@@ -8,6 +8,7 @@
 #include <string>
 #include <functional>
 #include <iterator>
+#include <numeric>
 using namespace std;
 
 
@@ -192,6 +193,10 @@ void main_merge()
 	}
 }
 
+
+/**
+ * 交集并集差集
+ */
 void main_set_intersection()
 {
 	set<int> v1{ 1,3,5,2,6,9 };
@@ -221,12 +226,99 @@ void main_set_intersection()
 	}
 }
 
+
+class Students
+{
+public:
+	Students(string name, int id)
+	{
+		this->name = name;
+		this->id = id;
+	}
+
+protected:
+public:
+	string name;
+	int id;
+};
+
+bool CompareStudent(const Students& s1,const Students &s2)
+{
+	return (s1.id < s2.id);
+}
+void main_sort()
+{
+	Students s1("lisi", 1);
+	Students s2("wangqu", 2);
+	Students s3("zhangsan", 3);
+	Students s4("zhaokiu", 4);
+	vector<Students> v1;
+	v1.push_back(s3);
+	v1.push_back(s2);
+	v1.push_back(s4);
+	v1.push_back(s1);
+	for (Students item:v1)
+	{
+		cout << item.id << "\t" << item.name << endl;
+	}
+	sort(v1.begin(), v1.end(), CompareStudent);
+	printf("\n");
+	for (Students item : v1)
+	{
+		cout << item.id << "\t" << item.name << endl;
+	}
+}
+
+void main_copy()
+{
+	vector<int> v1;
+	v1.push_back(2);
+	v1.push_back(5);
+	v1.push_back(3);
+
+	vector<int> v2;
+	v2.resize(v1.size());
+	copy(v1.begin(), v1.end(), v2.begin());
+	for (int i:v2)
+	{
+		cout << i << " ";
+	}
+	printf("\n");
+	replace(v2.begin(), v2.end(), 3, 30);
+	for (int i : v2)
+	{
+		cout << i << " ";
+	}
+	replace_if(v2.begin(), v2.end(), bind2nd(greater<int>(), 3), 99);
+	printf("\n");
+	for (int i : v2)
+	{
+		cout << i << " ";
+	}
+	printf("\n");
+	swap(v1,v2);
+	for (int i : v2)
+	{
+		cout << i << " ";
+	}
+	printf("\n");
+	for (int i : v1)
+	{
+		cout << i << " ";
+	}
+}
 /**
  * 排序相关算法
  */
 int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 //	main_merge();
-	main_set_intersection();
+//	main_set_intersection();
+//	main_sort();
+//	random_shuffle()//随机排序
+//	reverse() //倒序
+	main_copy();
+//	fill()
+//	accumulate()
 	return 0;
 }
