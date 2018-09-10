@@ -99,6 +99,7 @@ CircleLinkedListNode* deleteCircleLinkedListNode(CircleLinkedList*  list, unsign
 	TCircleList *tlist = NULL;
 	CircleLinkedListNode *ret = NULL;
 	tlist = (TCircleList *)list;
+
 	CircleLinkedListNode *current = &(tlist->header);
 	for (unsigned int i = 0; i < pos; i++)
 	{
@@ -106,7 +107,24 @@ CircleLinkedListNode* deleteCircleLinkedListNode(CircleLinkedList*  list, unsign
 	}
 	ret = current->next;
 	current->next = ret->next;
+
+	if (ret == tlist->silder);
+	{
+		tlist->silder = ret->next;
+	}
+
+	//如果是删除头结点,需要改变尾节点的指向
+	if (pos == 0)
+	{
+		CircleLinkedListNode *last = circleLinkedListGet(list, tlist->length - 1);
+		last->next = tlist->header.next;
+	}
 	tlist->length--;
+	if (tlist->length == 0)
+	{
+		tlist->header.next = NULL;
+		tlist->silder = NULL;
+	}
 	return ret;
 }
 
@@ -122,14 +140,21 @@ CircleLinkedListNode* deleteByNodeValue(CircleLinkedList *list, CircleLinkedList
 	TCircleList *tlist = NULL;
 	tlist = (TCircleList *)list;
 	CircleLinkedListNode *current = NULL;
+	CircleLinkedListNode * ret = NULL;
 	current = &(tlist->header);
-	for (unsigned int i = 0; i < tlist->length; i++)
+	unsigned int i = 0;
+	for ( i = 0; i < tlist->length; i++)
 	{
-		if (current == node)
+		if (current->next == node)
 		{
-			return current;
+			ret = current->next;
+			break;
 		}
 		current = current->next;
+	}
+	if (ret != NULL)
+	{
+		deleteCircleLinkedListNode(list, i);
 	}
 	return NULL;
 }
@@ -175,10 +200,10 @@ CircleLinkedListNode * circle_next(CircleLinkedList *list)
 	}
 	TCircleList *tlist = NULL;
 	tlist = (TCircleList *)list;
-	CircleLinkedListNode *node = NULL;
-	node = tlist->silder;
-	tlist->silder = node->next;
-	return node->next;
+	CircleLinkedListNode *ret = NULL;
+	ret = tlist->silder;
+	tlist->silder = ret->next;
+	return ret;
 }
 
 //获取当前元素
@@ -191,8 +216,11 @@ CircleLinkedListNode * circle_current(CircleLinkedList *list)
 	}
 	TCircleList *tlist = NULL;
 	tlist = (TCircleList *)list;
-
-	return tlist->header.next;
+	if (tlist == NULL)
+	{
+		return NULL;
+	}
+	return tlist->silder;
 }
 
 //重置游标到第第一个元素
