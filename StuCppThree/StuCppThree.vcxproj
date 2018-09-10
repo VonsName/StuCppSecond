@@ -146,11 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="circleLinkedList.c" />
+    <ClCompile Include="CppLinkedList.cpp" />
     <ClCompile Include="linklist.c" />
     <ClCompile Include="main01.c" />
+    <ClCompile Include="main02.c" />
+    <ClCompile Include="main03.cpp" />
     <ClCompile Include="seqList.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="circleLinkedList.h" />
+    <ClInclude Include="CppLinkedList.h" />
     <ClInclude Include="linklist.h" />
     <ClInclude Include="seqList.h" />
   </ItemGroup>

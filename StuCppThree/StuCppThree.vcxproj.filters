@@ -24,12 +24,30 @@
     <ClCompile Include="linklist.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="circleLinkedList.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main02.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CppLinkedList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main03.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="seqList.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="linklist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="circleLinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CppLinkedList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

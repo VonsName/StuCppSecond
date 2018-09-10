@@ -127,7 +127,7 @@ int main01seqlist(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ ch
 
 
 //线性表链式存储
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main0102(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	Teacher t1,t2, t3, t4, t5;
 	t1.age = 23;
@@ -191,4 +191,5 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 	printf("LinkedList长度:%d\n", linkListLength(list));
 
 	destoryLinkList(list);
+	return 0;
 }
