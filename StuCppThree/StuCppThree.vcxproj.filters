@@ -36,6 +36,12 @@
     <ClCompile Include="main03.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="dlinkedList.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main04.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="seqList.h">
@@ -48,6 +54,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CppLinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dlinkedList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

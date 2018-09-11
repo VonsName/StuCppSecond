@@ -11,7 +11,7 @@ typedef struct Stud
 	int age;
 }Stud;
 
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main02003(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	Stud s1, s2, s3;
 	s1.age = 23;
