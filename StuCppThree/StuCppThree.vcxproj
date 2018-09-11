@@ -154,7 +154,9 @@
     <ClCompile Include="main02.c" />
     <ClCompile Include="main03.cpp" />
     <ClCompile Include="main04.c" />
+    <ClCompile Include="main05.c" />
     <ClCompile Include="seqList.c" />
+    <ClCompile Include="seqStack.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="circleLinkedList.h" />
@@ -162,6 +164,7 @@
     <ClInclude Include="dlinkedList.h" />
     <ClInclude Include="linklist.h" />
     <ClInclude Include="seqList.h" />
+    <ClInclude Include="seqStack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

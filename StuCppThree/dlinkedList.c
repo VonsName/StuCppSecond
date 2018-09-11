@@ -7,7 +7,7 @@ typedef struct TDLinkedList
 {
 	DLinkedListNode header;
 	DLinkedListNode *slider;
-	int length;
+	unsigned int length;
 }TDLinkedList;
 
 //创建双向链表链表(链式存储)
@@ -19,6 +19,7 @@ DLinkedList* createDLinkedList()
 	tlist->header.next = NULL;
 	tlist->header.pre = NULL;
 	tlist->slider = NULL;
+	tlist->length = 0;
 	return (DLinkedList*)tlist;
 }
 
@@ -32,20 +33,26 @@ DLinkedListNode* insertDLinkedList(DLinkedList*  list, DLinkedListNode *node, un
 	}
 	TDLinkedList *tlist = NULL;
 	DLinkedListNode *current = NULL;
-	DLinkedListNode *next = NULL;
+	DLinkedListNode *mynext = NULL;
 	
 	tlist = (TDLinkedList *)list;
 	current = &(tlist->header);
+
 	for (unsigned int i = 0; i < pos && (current->next != NULL); i++)
 	{
 		current = current->next;
 	}
-	next = current->next;
+	mynext = current->next;
 	node->next = current->next;
 	current->next = node;
-	if (next != NULL)
+	if (tlist->length == 0)
 	{
-		next->pre = node;
+		tlist->slider = node;
+	}
+
+	if (mynext != NULL)
+	{
+		mynext->pre = node;
 	}
 	node->pre = current->pre;
 	tlist->length++;
@@ -54,7 +61,7 @@ DLinkedListNode* insertDLinkedList(DLinkedList*  list, DLinkedListNode *node, un
 
 
 //获取节点
-DLinkedListNode* dLinkedListGet(DLinkedList*  list, unsigned int pos)
+DLinkedListNode* dLinkedListGet(DLinkedList*  list, unsigned  int pos)
 {
 	if (list == NULL || pos <0)
 	{
@@ -65,11 +72,12 @@ DLinkedListNode* dLinkedListGet(DLinkedList*  list, unsigned int pos)
 	tlist = (TDLinkedList *)list;
 	DLinkedListNode *current = NULL;
 	current = &(tlist->header);
-	for (unsigned int i = 0; i < pos ; i++);
+	unsigned int a = 0;
+	for ( a = 0; a < pos  ; a++)
 	{
 		current = current->next;
 	}
-	return current;
+	return current->next;
 }
 
 //清除链表

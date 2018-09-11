@@ -42,6 +42,12 @@
     <ClCompile Include="main04.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main05.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="seqStack.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="seqList.h">
@@ -57,6 +63,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="dlinkedList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="seqStack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
