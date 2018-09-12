@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "seqStack.h"
+#include "seqList.h"
 
 
 typedef struct TSeqStack 
@@ -14,44 +15,44 @@ typedef struct TSeqStack
 //创建栈,线性存储
 SeqStack *createSeqStack(int capacity)
 {
-	return NULL;
+	return createList(capacity);
 }
 
 //销毁栈
 void destorySeqStack(SeqStack *stack)
 {
-
+	destoryList(stack);
 }
 
 //清空栈
 void clearSeqStack(SeqStack *stack)
 {
-
+	clearList(stack);
 }
 
-//压栈
+//压栈,,相当于在线性表尾部插入元素
 void* pushSeqStack(SeqStack *stack, void *item)
 {
-	return NULL;
+	return insertListNode(stack,item,listLength(stack));
 }
 
-//弹栈
+//弹栈,相当于获取线性表尾部元素
 void* topSeqStack(SeqStack *stack)
 {
-	return NULL;
+	return showListNode(stack,listLength(stack)-1);
 }
 
 
-//删除栈顶元素
+//删除栈顶元素,相当于删除线性表尾部元素
 void* popSeqStack(SeqStack *stack)
 {
-	return NULL;
+	return deleteListNode(stack,listLength(stack)-1);
 }
 
 //栈大小
 int seqStackSize(SeqStack *stack)
 {
-	return 0;
+	return listLength(stack);
 }
 
 

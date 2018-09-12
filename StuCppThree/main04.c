@@ -28,29 +28,57 @@ int main04001(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char**
 	node = insertDLinkedList(list, (DLinkedListNode *)&v3, 0);
 //	printf("插入Value值为:%d \n", ((MyTeacher *)node)->value);
 	printf("dlist的长度为：%d\n", dLinkedListLength(list));
-	//for (unsigned int i = 0; i < dLinkedListLength(list); i++)
-	//{
-	//	MyTeacher *pv = NULL;
-	//	pv = (MyTeacher *)dLinkedListGet(list, i);
-	//	if (pv != NULL)
-	//	{
-	//		printf("MyTeacher值为: %d\n", pv->value);
-	//	}
-	//}
+	for (unsigned int i = 0; i < dLinkedListLength(list); i++)
+	{
+		MyTeacher *pv = NULL;
+		pv = (MyTeacher *)dLinkedListGet(list, i);
+		if (pv != NULL)
+		{
+			printf("MyTeacher值为: %d\n", pv->value);
+		}
+	}
 	MyTeacher *pv = NULL;// (MyTeacher *)dlinklist_current(list);
-	////printf("MyTeacher值为: %d\n", pv->value);
-	//pv = (MyTeacher *)dlinklist_pre(list);
-	//printf("MyTeacher值为: %d\n", pv->value);
-	//pv = (MyTeacher *)dlinklist_pre(list);
-	//printf("MyTeacher值为: %d\n", pv->value);
-	//pv = (MyTeacher *)dlinklist_pre(list);
-	//printf("MyTeacher值为: %d\n", pv->value);
+	printf("pre\n");
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
 
+
+	printf("next\n");
 	pv = (MyTeacher *)dlinklist_next(list);
 	printf("MyTeacher值为: %d\n", pv->value);
-//	pv = (MyTeacher *)dlinklist_next(list);
-//	printf("MyTeacher值为: %d\n", pv->value);
-	
+	pv = (MyTeacher *)dlinklist_next(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_next(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+
+
+	printf("pre\n");
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+
+	printf("next\n");
+	pv = (MyTeacher *)dlinklist_next(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_next(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_next(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+
+	printf("pre\n");
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
+	pv = (MyTeacher *)dlinklist_pre(list);
+	printf("MyTeacher值为: %d\n", pv->value);
 
 	return 0;
 }

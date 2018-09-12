@@ -54,7 +54,7 @@ DLinkedListNode* insertDLinkedList(DLinkedList*  list, DLinkedListNode *node, un
 	{
 		mynext->pre = node;
 	}
-	node->pre = current->pre;
+	node->pre = current;
 	tlist->length++;
 	return node;
 }
@@ -211,8 +211,18 @@ DLinkedListNode * dlinklist_next(DLinkedList *list)
 	TDLinkedList *tlist = NULL;
 	tlist = (TDLinkedList *)list;
 	DLinkedListNode *ret = NULL;
+	/*if (tlist->slider == &(tlist->header))
+	{
+		ret = tlist->header.next;
+	}
+	else
+	{*/
 	ret = tlist->slider;
-	tlist->slider = ret->next;
+	//}
+	if (ret->next  != NULL)
+	{
+		tlist->slider = ret->next;
+	}
 	return ret;
 }
 
@@ -227,8 +237,18 @@ DLinkedListNode * dlinklist_pre(DLinkedList *list)
 	TDLinkedList *tlist = NULL;
 	tlist = (TDLinkedList *)list;
 	DLinkedListNode *ret = NULL;
+	/*if (tlist->slider == &(tlist->header))
+	{
+		ret = tlist->header.next;
+	}
+	else
+	{*/
 	ret = tlist->slider;
-	tlist->slider = ret->pre;
+//	}
+	if (ret->pre != &(tlist->header))
+	{
+		tlist->slider = ret->pre;
+	}
 	return ret;
 }
 

@@ -63,9 +63,9 @@ SeqListNode* insertListNode(SeqList* list, SeqListNode* node,unsigned int pos)
 		printf("insertListNode ÈÝÁ¿ÒÑÂú\n");
 		return NULL;
 	}
-	if (pos >= tlist->length)
+	if (pos > tlist->length)
 	{
-		pos = 0;
+		pos = tlist->length-1;
 	}
 	for (unsigned int i = tlist->length; i > pos; i--)
 	{
