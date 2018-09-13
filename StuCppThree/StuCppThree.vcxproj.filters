@@ -48,6 +48,12 @@
     <ClCompile Include="seqStack.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="linkstack.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main06.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="seqList.h">
@@ -66,6 +72,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="seqStack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="linkstack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
