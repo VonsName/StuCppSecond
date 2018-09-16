@@ -149,23 +149,29 @@
     <ClCompile Include="circleLinkedList.c" />
     <ClCompile Include="CppLinkedList.cpp" />
     <ClCompile Include="dlinkedList.c" />
+    <ClCompile Include="linkedQueue.c" />
     <ClCompile Include="linklist.c" />
     <ClCompile Include="linkstack.c" />
+    <ClCompile Include="main006.c" />
     <ClCompile Include="main01.c" />
     <ClCompile Include="main02.c" />
     <ClCompile Include="main03.cpp" />
     <ClCompile Include="main04.c" />
     <ClCompile Include="main05.c" />
-    <ClCompile Include="main06.cpp" />
+    <ClCompile Include="main07.c" />
+    <ClCompile Include="main08.c" />
     <ClCompile Include="seqList.c" />
+    <ClCompile Include="seqQueue.c" />
     <ClCompile Include="seqStack.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="circleLinkedList.h" />
     <ClInclude Include="CppLinkedList.h" />
     <ClInclude Include="dlinkedList.h" />
+    <ClInclude Include="linkedQueue.h" />
     <ClInclude Include="linklist.h" />
     <ClInclude Include="linkstack.h" />
+    <ClInclude Include="seqQueue.h" />
     <ClInclude Include="seqList.h" />
     <ClInclude Include="seqStack.h" />
   </ItemGroup>

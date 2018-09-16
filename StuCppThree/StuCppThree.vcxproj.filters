@@ -51,7 +51,19 @@
     <ClCompile Include="linkstack.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="main06.cpp">
+    <ClCompile Include="main006.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main07.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="seqQueue.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="linkedQueue.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main08.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,6 +87,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="linkstack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="seqQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

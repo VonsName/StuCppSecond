@@ -54,7 +54,13 @@ void* pushLinkedStack(LinkedStack *stack, void *item)
 void* topLinkedStack(LinkedStack *stack)
 {
 	LinkedListNode * node = linlistGet(stack, 0);
-	return ((TLinkedStack *)node)->item;
+	TLinkedStack *tmp = NULL;
+	tmp = (TLinkedStack *)node;
+	if (tmp!=NULL)
+	{
+		return tmp->item;
+	}
+	return tmp;
 }
 
 //É¾³ýÕ»¶¥ÔªËØ
@@ -64,9 +70,9 @@ void* popLinkedStack(LinkedStack *stack)
 	TLinkedStack *tmp = NULL;
 	tmp = (TLinkedStack *)node;
 	void *item = NULL;
-	item = tmp->item;
 	if (tmp!=NULL)
 	{
+		item = tmp->item;
 		free(tmp);
 		tmp = NULL;
 	}
