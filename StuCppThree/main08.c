@@ -116,6 +116,80 @@ void LRD(BitNode *root)
 	LRD(root->rchild);
 	printf("%d ", root->data);
 }
+
+//求叶子节点数
+int sum = 0;
+void countLeaf(BitNode *root)
+{
+	if (root)
+	{
+		if (!root->lchild && !root->rchild)
+		{
+			sum++;
+		}
+		if (root->lchild)
+		{
+			countLeaf(root->lchild);
+		}
+		if (root->rchild)
+		{
+			countLeaf(root->rchild);
+		}
+	}
+}
+
+//树的深度
+int depth(BitNode *root)
+{
+	int deptv = 0;
+	int ldeptv = 0;
+	int rdeptv = 0;
+	if (root == NULL)
+	{
+		return deptv;
+	}
+	ldeptv = depth(root->lchild);
+	rdeptv = depth(root->rchild);
+	deptv = 1 + (ldeptv > rdeptv ? ldeptv : rdeptv);
+	return deptv;
+}
+
+//copy 二叉树
+BitNode *copyTree(BitNode *root)
+{
+	if (root == NULL)
+	{
+		return NULL;
+	}
+	BitNode *newNode = NULL;
+	BitNode *newLp = NULL;
+	BitNode *newRp = NULL;
+	if (root->lchild)
+	{
+		newLp = copyTree(root->lchild);
+	}
+	else
+	{
+		newLp = NULL;
+	}
+	if (root->rchild)
+	{
+		newRp = copyTree(root->rchild);
+	}
+	else 
+	{
+		newRp = NULL;
+	}
+	newNode = (BitNode *)malloc(sizeof(BitNode));
+	if (newNode == NULL)
+	{
+		return NULL;
+	}
+	newNode->lchild = newLp;
+	newNode->rchild = newRp;
+	newNode->data = root->data;
+	return newNode;
+}
 /**
  * 二叉树的遍历:1.先序遍历:DLR 根节点->左子树->右子树 前缀表达式
  *						 2.中序遍历:LDR 左子树->根节点->右子树 中缀表达式
@@ -146,5 +220,13 @@ int main(int argc,char *argv[])
 	LDR(&b1);
 	printf("\n后序遍历\n");
 	LRD(&b1);
+	printf("\n");
+	countLeaf(&b1);
+	printf("叶子节点数为:%d \n", sum);
+	int dep = depth(&b1);
+	printf("树的高度为:%d \n", dep);
+	BitNode *newNode =  copyTree(&b1);
+	printf("copy树先序遍历\n");
+	DLR(newNode);
 	return 0;
 }
