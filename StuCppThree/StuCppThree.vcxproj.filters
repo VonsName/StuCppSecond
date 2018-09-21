@@ -66,6 +66,12 @@
     <ClCompile Include="main08.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main09.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CppSeqList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="seqList.h">
@@ -93,6 +99,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="linkedQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CppSeqList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

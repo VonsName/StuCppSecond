@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="circleLinkedList.c" />
     <ClCompile Include="CppLinkedList.cpp" />
+    <ClCompile Include="CppSeqList.cpp" />
     <ClCompile Include="dlinkedList.c" />
     <ClCompile Include="linkedQueue.c" />
     <ClCompile Include="linklist.c" />
@@ -160,6 +161,7 @@
     <ClCompile Include="main05.c" />
     <ClCompile Include="main07.c" />
     <ClCompile Include="main08.c" />
+    <ClCompile Include="main09.cpp" />
     <ClCompile Include="seqList.c" />
     <ClCompile Include="seqQueue.c" />
     <ClCompile Include="seqStack.c" />
@@ -167,6 +169,7 @@
   <ItemGroup>
     <ClInclude Include="circleLinkedList.h" />
     <ClInclude Include="CppLinkedList.h" />
+    <ClInclude Include="CppSeqList.h" />
     <ClInclude Include="dlinkedList.h" />
     <ClInclude Include="linkedQueue.h" />
     <ClInclude Include="linklist.h" />

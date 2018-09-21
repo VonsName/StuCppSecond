@@ -194,8 +194,11 @@ BitNode *copyTree(BitNode *root)
  * 二叉树的遍历:1.先序遍历:DLR 根节点->左子树->右子树 前缀表达式
  *						 2.中序遍历:LDR 左子树->根节点->右子树 中缀表达式
  *						 3.后序遍历:LRD 左子树->右子树->根节点 后缀表达式
+ *通过中序遍历和先序遍历可以确定一棵树
+ *通过中序遍历和后序遍历可以确定一棵树
+ *但是通过先序遍历和后序遍历不能确定一棵树
  */
-int main(int argc,char *argv[])
+int main08001(int argc,char *argv[])
 {
 	
 	//printf("%d \n",foo(5));
