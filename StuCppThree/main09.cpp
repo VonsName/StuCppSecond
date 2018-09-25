@@ -111,7 +111,7 @@ int main09002(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char**
 	return 0;
 }
 
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main09003(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	Day d1, d2, d3;
 	Day *p1=nullptr, *p2=nullptr, *p3=nullptr;

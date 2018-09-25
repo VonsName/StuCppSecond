@@ -155,6 +155,8 @@
     <ClCompile Include="linkstack.c" />
     <ClCompile Include="main006.c" />
     <ClCompile Include="main01.c" />
+    <ClCompile Include="main010.c" />
+    <ClCompile Include="main011.c" />
     <ClCompile Include="main02.c" />
     <ClCompile Include="main03.cpp" />
     <ClCompile Include="main04.c" />
