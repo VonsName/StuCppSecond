@@ -78,6 +78,9 @@
     <ClCompile Include="main011.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main012.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="seqList.h">

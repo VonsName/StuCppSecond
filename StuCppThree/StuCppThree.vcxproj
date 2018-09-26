@@ -157,6 +157,7 @@
     <ClCompile Include="main01.c" />
     <ClCompile Include="main010.c" />
     <ClCompile Include="main011.c" />
+    <ClCompile Include="main012.c" />
     <ClCompile Include="main02.c" />
     <ClCompile Include="main03.cpp" />
     <ClCompile Include="main04.c" />

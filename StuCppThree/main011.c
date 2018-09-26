@@ -78,7 +78,7 @@ void freeTree(BitNode *root)
 /**
  * Ê÷µÄ´´½¨
  */
-int main(int argc,char *argv[])
+int main01101(int argc,char *argv[])
 {
 	BitNode *root = NULL;
 	root = createBitTree();
