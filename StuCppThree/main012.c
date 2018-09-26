@@ -114,6 +114,106 @@ void shellSort(int *arr, int len)
 	}
 	printf("\n");
 }
+
+
+int paritition(int *arr,int low, int high)
+{
+	int pv = arr[low];
+	while (low < high)
+	{
+		while (low < high && (arr[high] >= pv))
+		{
+			high--;
+		}
+		myswap(arr, low, high);
+		while (low < high && (arr[low] <= pv))
+		{
+			low++;
+		}
+		myswap(arr, low, high);
+	}
+	return low;
+}
+
+void qSort(int *arr, int low, int high)
+{
+	if (low < high)
+	{
+		int pv = paritition(arr,low, high);
+		qSort(arr, low, pv - 1);
+		qSort(arr, pv + 1, high);
+	}
+}
+/**
+ * ¿ìËÙÅÅÐò
+ */
+void quickSort(int *arr, int len)
+{
+	qSort(arr, 0, len - 1);
+	for (int i = 0; i < len; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+
+/**
+ * ¹é²¢ÅÅÐò
+ */
+void myMerage(int *src, int *des, int left, int mid, int right)
+{
+	int i = left;
+	int j = mid + 1;
+	int k = left;
+	while (i <= mid && j <= right)
+	{
+		if (src[i]<src[j])
+		{
+			des[k++] = src[i++];
+		}
+		else {
+			des[k++] = src[j++];
+		}
+	}
+	while (i <= mid)
+	{
+		des[k++] = src[i++];
+	}
+	while (j <= right)
+	{
+		des[k++] = src[j++];
+	}
+}
+
+void msort(int *src, int *des, int left, int right, int max)
+{
+	if (left == right)
+	{
+		des[left] = src[left];
+	}
+	else {
+		int mid = (left + right) / 2;
+		int *space = (int *)malloc(sizeof(int)*max);
+		if (space != NULL)
+		{
+			msort(src, space, left,mid,max);
+			msort(src, space, mid+1,right,max);
+			myMerage(space, des, left, mid, right);
+			free(space);
+		}
+	}
+}
+
+void mergeSort(int *arr,int len)
+{
+	msort(arr, arr, 0, len - 1, len);
+	for (int i = 0; i < len; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+
 int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	int a[] = { 2,12,3,5,8 };
@@ -123,5 +223,7 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 	insertSort(a, len);
 	bubbleSort(a,len);
 	shellSort(a, len);
+	quickSort(a, len);
+	mergeSort(a, len);
 	return 0;
 }

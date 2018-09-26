@@ -31,5 +31,8 @@ public:
 	{
 		this->next = nullptr;
 	}
+	~Node()
+	{
+	}
 };
 

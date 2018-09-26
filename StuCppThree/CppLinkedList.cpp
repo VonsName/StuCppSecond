@@ -60,7 +60,7 @@ int CppLinkedList<T>::deleteNode(int pos)
 	}
 	res = current->next;
 	current->next = res->next;
-	free(res);
+	delete res;
 	this->length--;
 	return 0;
 }
