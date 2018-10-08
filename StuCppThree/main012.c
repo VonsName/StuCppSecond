@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
+#include <process.h>
 
 
 void myswap(int *arr, int k, int i)
@@ -214,7 +216,7 @@ void mergeSort(int *arr,int len)
 	printf("\n");
 }
 
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main01201(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	int a[] = { 2,12,3,5,8 };
 
@@ -225,5 +227,63 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 	shellSort(a, len);
 	quickSort(a, len);
 	mergeSort(a, len);
+	return 0;
+}
+
+int main012002(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+{
+	char szCommandLine[] = "notepad";	
+	STARTUPINFO si = { sizeof(si) };	
+	PROCESS_INFORMATION pi;	
+	si.dwFlags = STARTF_USESHOWWINDOW; // 指定wShowWindow成员有效	
+	si.wShowWindow = TRUE; // 此成员设为TRUE的话则显示新建进程的主窗口	
+	BOOL bRet = CreateProcess (	NULL,	// 不在此指定可执行文件的文件名		
+		szCommandLine,// 命令行参数		
+		NULL,	// 默认进程安全性		
+		NULL,	// 默认进程安全性		
+		FALSE,	// 指定当前进程内句柄不可以被子进程继承		
+		CREATE_NEW_CONSOLE,	// 为新进程创建一个新的控制台窗口		
+		NULL,// 使用本进程的环境变量		
+		NULL,// 使用本进程的驱动器和目录		
+		&si,	
+		&pi) ;	
+		if(bRet)	
+		{		
+			// 不使用的句柄最好关掉		
+			CloseHandle(pi.hThread);		
+			CloseHandle(pi.hProcess);		
+			printf("新进程的ID号：%d\n",pi.dwProcessId);		
+			printf("新进程的主线程ID号：%d\n",pi.dwThreadId);	
+		}	
+		return 0;
+}
+
+int a = 0;
+void myproc(void * v)
+{
+	while (1)
+	{
+		a++;
+		if (a >= 10)
+		{
+			break;
+		}
+		Sleep(2000);
+		printf("a=%d 线程运行中\n", a);
+	}
+	printf("新建线程结束\n");
+	_endthread();
+}
+int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+{
+	_beginthread(myproc, 0, NULL);
+	while (1)
+	{
+		if (a >= 10)
+		{
+			printf("主线程运行完毕\n");
+			break;
+		}
+	}
 	return 0;
 }
